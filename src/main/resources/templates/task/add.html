@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+<!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
+
+
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="container">
+
+	<form id="addtaskform" enctype="application/json">
+	  <div class="form-group">
+	    <label for="name">Nom de la Tâche</label>
+	    <input type="text" name="name" class="form-control" id="name" placeholder="Prenom ..."/>
+	  </div>
+	  <div class="form-group">
+	    <label for="project">Project</label>
+		<select name="project" id="project_list_select" class="form-control"></select>	   
+	  </div>
+	  <div class="form-group">
+	    <label for="description">description</label>
+	    <input type="text" name="description" class="form-control" id="description" placeholder="Nom ..."/>
+	  </div>
+	   <div class="form-group">
+	    <label for="assignedUser">Assignée à</label>
+		<select name="assignedUser" id="user_list_select" class="form-control"></select>
+	   </div>
+	   <div class="form-group">
+	    <label for="status">Statut</label>
+		<select name="status" id="status_list_select" class="form-control"></select>	   
+	   </div>
+	   <div class="form-group">
+	    <label for="startDate">Date de début</label>
+	    <input type="text" name="startDate" class="form-control" id="startDate" placeholder="Mote de pass ..."/>
+	   </div>
+	   <div class="form-group">
+	    <label for="dueDate">date d'échéance</label>
+	    <input type="text" name="dueDate" class="form-control" id="dueDate" placeholder="Mote de pass ..."/>
+	   </div>
+	   
+	  <button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+
+</div>
+<!--  [] -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script type="text/javascript" src="/js/add.js"></script>
+</body>
+</html>

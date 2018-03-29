@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+<!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="container">
+
+	<form id="adduserform" enctype="application/json">
+	  <div class="form-group">
+	    <label for="firstname">Prénom</label>
+	    <input type="text" name="firstName" class="form-control" id="firstname" placeholder="Prenom ..."/>
+	  </div>
+	  <div class="form-group">
+	    <label for="lastname">Nom</label>
+	    <input type="text" name="lastName" class="form-control" id="lastname" placeholder="Nom ..."/>
+	  </div>
+	   <div class="form-group">
+	    <label for="username">Nom d'utilisateur</label>
+	    <input type="text" name="username" class="form-control" id="username" placeholder="Nom d'utilisateur ..."/>
+	   </div>
+	   <div class="form-group">
+	    <label for="password">Mote de pass</label>
+	    <input type="password" name="password" class="form-control" id="password" placeholder="Mote de pass ..."/>
+	   </div>
+	  <button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+
+</div>
+<!--  [] -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="/js/list_projects.js"></script>
+<script type="text/javascript">
+
+$('#adduserform').submit(function(event){
+	event.preventDefault();
+	
+	var data = {
+	            
+	            'username'    : $('input[name=username]').val(),
+	            'password'    : $('input[name=password]').val(),
+	            'firstName'    : $('input[name=firstName]').val(),
+	            'lastName'    : $('input[name=lastName]').val()
+			
+	} ;
+	
+	$.ajax({
+	    url: "http://localhost:8080/api/users/",
+	    type: 'POST',
+	    data: JSON.stringify(data) ,
+	    contentType: 'application/json',
+	    dataType: 'json',
+	    success: function(data) {
+	        
+	    }
+	});
+	
+	
+});
+
+
+</script>
+</body>
+</html>
