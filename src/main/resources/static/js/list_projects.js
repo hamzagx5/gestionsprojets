@@ -15,13 +15,33 @@ $(document).ready( function () {
 	        			"<td>"+data[i]["description"]+"</td>"+
 	        			"<td>"+data[i]["startDate"]+"</td>"+
 	        			"<td>"+data[i]["endDate"]+"</td>"+
+	        			"<td>" +
+	        			"<a class='btn btn-primary' href='"+serverName+"/projects/show/"+data[i]["id"]+"'>Details</a>&nbsp;" +
+	        			"<button class='btn btn-danger' id='btnDeleteProject' data-id="+data[i]['id']+">Delete</button>" +
+	        			"</td>"+
 	        			"</tr>"
 	        			)
-	        }
+	        	//$("button").click({projectId:data[i]["id"]},deleteProjectById);
+	        	 
+	        }///////sla 
 	        $('#projectlist').DataTable({
 	        	 "language": {
 	                 "url": serverName+"/french_datatable.json"
 	             }
+	        }); 
+	        $("button").click(function(){
+	        	console.log($(this).attr("data-id"));
+	        	deleteProjectById($(this).attr("data-id"));
+	        	/*
+	        	$.ajax({
+	        	    url: serverName+"/api/projects/"+$(this).attr("data-id"),
+	        	    type: 'DELETE',
+	        	    dataType: 'json',
+	        	    success: function(data) {
+	        	        
+	        	    }
+	        	});
+	        	*/
 	        });
 	        
 	    }
@@ -39,6 +59,8 @@ $(document).ready( function () {
 	        			"<td>" +data[i]["id"]+"</td>"+
 	        			"<td>"+data[i]["firstName"]+"</td>"+
 	        			"<td>"+data[i]["lastName"]+"</td>"+
+	        			"<td><a class='btn btn-primary' href='"+serverName+"/tasks/show/"+data[i]["id"]+"'>Details</a></td>"+
+	        			"<input type='submit' value='' name='' />"+
 	        			"</tr>"
 	        			)
 	        }
@@ -80,5 +102,16 @@ $(document).ready( function () {
 	        
 	    }
 	});
+	
+	function deleteProjectById(id){
+		$.ajax({
+    	    url: serverName+"/api/projects/"+id,
+    	    type: 'DELETE',
+    	    dataType: 'json',
+    	    success: function(data) {
+    	        console.log("record deleteed");
+    	    }
+    	});
+	}
 	
 });
