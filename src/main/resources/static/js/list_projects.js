@@ -32,16 +32,7 @@ $(document).ready( function () {
 	        $("button").click(function(){
 	        	console.log($(this).attr("data-id"));
 	        	deleteProjectById($(this).attr("data-id"));
-	        	/*
-	        	$.ajax({
-	        	    url: serverName+"/api/projects/"+$(this).attr("data-id"),
-	        	    type: 'DELETE',
-	        	    dataType: 'json',
-	        	    success: function(data) {
-	        	        
-	        	    }
-	        	});
-	        	*/
+	      
 	        });
 	        
 	    }
@@ -59,8 +50,9 @@ $(document).ready( function () {
 	        			"<td>" +data[i]["id"]+"</td>"+
 	        			"<td>"+data[i]["firstName"]+"</td>"+
 	        			"<td>"+data[i]["lastName"]+"</td>"+
-	        			"<td><a class='btn btn-primary' href='"+serverName+"/tasks/show/"+data[i]["id"]+"'>Details</a></td>"+
-	        			"<input type='submit' value='' name='' />"+
+	        			"<td><a class='btn btn-primary' href='"+serverName+"/tasks/show/"+data[i]["id"]+"'>Details</a>&nbsp;"+
+	        			"<button class='btn btn-danger' id='btnDeleteUser' data-id="+data[i]['id']+">Delete</button>" +
+	        			"</td>"+
 	        			"</tr>"
 	        			)
 	        }
@@ -68,6 +60,11 @@ $(document).ready( function () {
 	        	 "language": {
 	                 "url": serverName+"/french_datatable.json"
 	             }
+	        });
+	        $("button").click(function(){
+	        	console.log($(this).attr("data-id"));
+	        	deleteUserById($(this).attr("data-id"));
+	      
 	        });
 	        
 	    }
@@ -89,17 +86,23 @@ $(document).ready( function () {
 	        			"<td>"+data[i]["description"]+"</td>"+
 	        			"<td>"+data[i]["startDate"]+"</td>"+
 	        			"<td>"+data[i]["dueDate"]+"</td>"+
-	        			"<td><a class='btn btn-primary' href='"+serverName+"/tasks/show/"+data[i]["id"]+"'>Details</a></td>"+
-	        			"<input type='submit' value='' name='' />"+
+	        			"<td><a class='btn btn-primary' href='"+serverName+"/tasks/show/"+data[i]["id"]+"'>Details</a>&nbsp;"+
+	        			"<button class='btn btn-danger' id='btnDeleteTask' data-id="+data[i]['id']+">Delete</button>" +
+	        			"</td>"+
 	        			"</tr>"
 	        			)
 	        }
+	        
 	        $('#tasklist').DataTable({
 	        	 "language": {
 	                 "url": serverName+"/french_datatable.json"
 	             }
 	        });
-	        
+	        $("button").click(function(){
+	        	console.log($(this).attr("data-id"));
+	        	deleteTaskById($(this).attr("data-id"));
+	      
+	        });
 	    }
 	});
 	
@@ -112,6 +115,29 @@ $(document).ready( function () {
     	        console.log("record deleteed");
     	    }
     	});
+		window.location.reload();
+	}
+	function deleteUserById(id){
+		$.ajax({
+    	    url: serverName+"/api/users/"+id,
+    	    type: 'DELETE',
+    	    dataType: 'json',
+    	    success: function(data) {
+    	        console.log("record deleteed");
+    	    }
+    	});
+		window.location.reload();
+	}
+	function deleteTaskById(id){
+		$.ajax({
+    	    url: serverName+"/api/tasks/"+id,
+    	    type: 'DELETE',
+    	    dataType: 'json',
+    	    success: function(data) {
+    	        console.log("record deleteed");
+    	    }
+    	});
+		window.location.reload();
 	}
 	
 });

@@ -6,19 +6,32 @@
 </head>
 <body>
 
+<div class="container">
+
+	<form id="adduserform" enctype="application/json">
+	  <div class="form-group">
+	    <label for="firstname">Prénom</label>
+	    <input type="text" name="firstName" class="form-control" id="firstname" placeholder="Prenom ..."/>
+	  </div>
+	  <div class="form-group">
+	    <label for="lastname">Nom</label>
+	    <input type="text" name="lastName" class="form-control" id="lastname" placeholder="Nom ..."/>
+	  </div>
+	   <div class="form-group">
+	    <label for="username">Nom d'utilisateur</label>
+	    <input type="text" name="username" class="form-control" id="username" placeholder="Nom d'utilisateur ..."/>
+	   </div>
+	   <div class="form-group">
+	    <label for="password">Mote de pass</label>
+	    <input type="password" name="password" class="form-control" id="password" placeholder="Mote de pass ..."/>
+	   </div>
+	  <button type="submit" class="btn btn-primary">Ajouter</button>
+	</form>
+
+</div>
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-
-$.ajax({
-    url: "http://localhost:8080/users/",
-    type: 'GET',
-    dataType: 'json',
-    success: function(data) {
-        console.log(data);
-    }
-});
-</script>
+<script type="text/javascript" src="/js/edit.js"></script>
 </body>
 </html>

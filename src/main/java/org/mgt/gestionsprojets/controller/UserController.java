@@ -2,6 +2,7 @@ package org.mgt.gestionsprojets.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -23,8 +24,8 @@ public class UserController {
 		return "/user/add" ;
 	}
 	
-	@GetMapping("/edit")
-	public String edit() {
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable Integer id) {
 		return "user/edit" ;
 	}
 	
